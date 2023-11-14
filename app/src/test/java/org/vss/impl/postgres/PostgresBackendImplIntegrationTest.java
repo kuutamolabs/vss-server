@@ -33,6 +33,8 @@ public class PostgresBackendImplIntegrationTest extends AbstractKVStoreIntegrati
     Class.forName("org.postgresql.Driver");
     this.connection = DriverManager.getConnection(postgreSQLContainer.getJdbcUrl(),
         postgreSQLContainer.getUsername(), postgreSQLContainer.getPassword());
+    // XXX
+    // https://stackoverflow.com/questions/49339713/how-to-generate-sql-without-a-database-connection-using-jooq
     DSLContext dslContext = DSL.using(connection, SQLDialect.POSTGRES);
 
     this.kvStore = new PostgresBackendImpl(dslContext);
