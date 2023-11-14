@@ -76,10 +76,13 @@ jooq {
 
       generationTool {
         jdbc {
+          def db = System.getenv('DB_HOST')
+          def password = System.getenv('DB_PASSWORD')
+
           driver = 'org.postgresql.Driver'
-          url = 'jdbc:postgresql://localhost:5432/postgres'
+          url = "jdbc:postgresql://${db}:5432/postgres"
           user = 'postgres'
-          password = 'YOU_MUST_CHANGE_THIS_PASSWORD'
+          password = "${password}"
           properties {
             property {
               key = 'ssl'
